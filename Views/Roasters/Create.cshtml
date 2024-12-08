@@ -1,0 +1,103 @@
+﻿@model Swag.Models.Roaster
+
+@{
+    ViewData["Title"] = "Create Roaster";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Swag</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Create Roaster</h2>
+
+        <!-- Correctly formatted form tag with opening and closing -->
+        <form asp-action="Create">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="EmployeeName">Employee Name</label>
+                        <input type="text" class="form-control" id="EmployeeName" asp-for="EmployeeName" placeholder="Enter employee name" />
+                        <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="StartDate">Start Date</label>
+                        <input type="date" class="form-control" id="StartDate" asp-for="StartDate" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="StartTime">Start Time</label>
+                        <input type="time" class="form-control" id="StartTime" asp-for="StartTime" />
+                        <span asp-validation-for="StartTime" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="EndDate">End Date</label>
+                        <input type="date" class="form-control" id="EndDate" asp-for="EndDate" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="EndTime">End Time</label>
+                        <input type="time" class="form-control" id="EndTime" asp-for="EndTime" />
+                        <span asp-validation-for="EndTime" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Role">Role</label>
+                        <input type="text" class="form-control" id="Role" asp-for="Role" placeholder="Enter role" />
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="BreakStartTime">Break Start Time</label>
+                        <input type="time" class="form-control" id="BreakStartTime" asp-for="BreakStartTime" />
+                        <span asp-validation-for="BreakStartTime" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="BreakEndTime">Break End Time</label>
+                        <input type="time" class="form-control" id="BreakEndTime" asp-for="BreakEndTime" />
+                        <span asp-validation-for="BreakEndTime" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Create Roaster</button>
+                <a class="btn btn-secondary" href="@Url.Action("Index", "Roasters")">Back to List</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

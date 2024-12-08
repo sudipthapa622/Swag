@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Swag</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            color: #000; /* Default text color */
+        }
+
+        .navbar {
+            background-color: #ffd700;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #333;
+            font-weight: bold;
+        }
+
+            .navbar-nav .nav-item .nav-link:hover {
+                color: #ffd700;
+            }
+
+        .header {
+            background-color: #ffd700;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .header img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+        .section-title {
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 20px;
+            color: #000; /* Ensure card text is visible */
+        }
+
+        .card-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .badge-custom {
+            background-color: #28a745;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .mt-3 {
+            margin-top: 20px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0; /* Light gray text for better visibility */
+        }
+
+        .navbar.dark-mode {
+            background-color: #333333;
+        }
+
+        .navbar-nav .nav-item .nav-link.dark-mode {
+            color: #e0e0e0; /* Light gray text for nav links */
+        }
+
+        .header.dark-mode {
+            background-color: #444444;
+            color: #e0e0e0; /* Light gray header text */
+        }
+
+        .card.dark-mode {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            color: #e0e0e0; /* Light gray text in cards */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px 0;
+        }
+
+            footer a {
+                color: #000;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                footer a:hover {
+                    color: #ffd700;
+                }
+
+            footer p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <!-- Navbar at the top of the page -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/">Swag</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Employees/Create">Employee</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Roasters/Create">Create Roaster</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/LeaveRequests/Create">Create Leave Request</a>
+                </li>
+            </ul>
+            <!-- Dark Mode Toggle -->
+            <div class="ms-auto">
+                <button id="darkModeToggle" class="btn btn-outline-dark">Dark Mode</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Work</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        @RenderBody() <!-- This is where the page-specific content will be rendered -->
+        <!-- Optionally render scripts if defined by specific pages -->
+        @RenderSection("Scripts", required: false)
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="text-center py-4">
+        <p>&copy; 2024 Swag. All Rights Reserved.</p>
+        <a href="/about">About Us</a> | <a href="/contact">Contact</a>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-item .nav-link');
+        const header = document.querySelector('.header');
+        const cards = document.querySelectorAll('.card');
+
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            navbar.classList.toggle('dark-mode');
+            header.classList.toggle('dark-mode');
+            navLinks.forEach(link => link.classList.toggle('dark-mode'));
+            cards.forEach(card => card.classList.toggle('dark-mode'));
+
+            // Update button text
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode')
+                ? 'Light Mode'
+                : 'Dark Mode';
+        });
+    </script>
+
+</body>
+</html>
