@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Swag.Models;
 
 namespace Swag.Data
 {
-    public class SwagContext : DbContext
+    public class SwagContext : IdentityDbContext<IdentityUser>
     {
-        public SwagContext (DbContextOptions<SwagContext> options)
+        public SwagContext(DbContextOptions<SwagContext> options)
             : base(options)
         {
         }
@@ -17,6 +14,5 @@ namespace Swag.Data
         public DbSet<Swag.Models.Employee> Employee { get; set; } = default!;
         public DbSet<Swag.Models.LeaveRequest> LeaveRequest { get; set; } = default!;
         public DbSet<Swag.Models.Roaster> Roaster { get; set; } = default!;
-        
     }
 }
